@@ -203,3 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.error('Error loading base.xml:', error));
 });
+
+function help() {
+    window.open('https://gamebanana.com/tools/19248');
+}
