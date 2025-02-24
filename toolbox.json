@@ -1,0 +1,117 @@
+{
+    "kind": "categoryToolbox",
+    "contents": [
+      {
+        "kind": "category",
+        "name": "Functions",
+        "custom": "PROCEDURE",
+        "contents": []
+      },
+      {
+        "kind": "category",
+        "name": "Variables",
+        "custom": "VARIABLE"
+      },
+      {
+        "kind": "category",
+        "name": "Constants",
+        "contents": [
+          {
+            "kind": "block",
+            "type": "math_number",
+            "fields": {
+              "NUM": 42
+            }
+          },
+          {
+            "kind": "block",
+            "type": "text",
+            "fields": {
+              "TEXT": "Hello"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "category",
+        "name": "Logic",
+        "contents": [
+          {
+            "kind": "block",
+            "type": "controls_if"
+          },
+          {
+            "kind": "block",
+            "type": "controls_repeat_ext",
+            "inputs": {
+              "TIMES": {
+                "block": {
+                  "type": "math_number",
+                  "fields": {
+                    "NUM": 10
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "kind": "category",
+        "name": "Song Progress",
+        "contents": [
+          {
+            "kind": "block",
+            "type": "startCountdown"
+          },
+          {
+            "kind": "block",
+            "type": "endSong"
+          },
+          {
+            "kind": "block",
+            "type": "getSongPosition"
+          }
+        ]
+      },
+      {
+        "kind": "category",
+        "name": "Song Control",
+        "contents": [
+          {
+            "kind": "block",
+            "type": "restartSong"
+          },
+          {
+            "kind": "block",
+            "type": "exitSong"
+          },
+          {
+            "kind": "block",
+            "type": "loadSong"
+          }
+        ]
+      },
+      {
+        "kind": "category",
+        "name": "Video",
+        "contents": [
+          {
+            "kind": "block",
+            "type": "loadVideo"
+          }
+        ]
+      },
+      {
+        "kind": "category",
+        "name": "Raw LUA",
+        "contents": [
+          {
+            "kind": "block",
+            "type": "luaCode"
+          }
+        ]
+      }
+    ]
+  }
+  

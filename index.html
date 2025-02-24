@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyCode</title>
+    <!-- Load Blockly core -->
+    <script src="https://unpkg.com/blockly/blockly_compressed.js"></script>
+    <!-- Load the default blocks -->
+    <script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
+    <!-- Load a generator -->
+    <script src="https://unpkg.com/blockly/lua_compressed.js"></script>
+    <!-- Load a message file -->
+    <script src="https://unpkg.com/blockly/msg/en.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="bar">
+        FNF EasyCode (beta)
+        <span style="margin-right: 10px;"></span>
+        <button onclick="saveProject()">Save</button>
+        <button onclick="loadProject()">Load</button>
+        <button onclick="exportLua()">Export</button>
+    </div>
+    <div id="blocklyDiv" style="height: calc(100vh - 30px); width: 100%;"></div>
+</body>
+
+<script src="script/index.js"></script>
+</html>
