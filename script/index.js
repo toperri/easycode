@@ -168,7 +168,16 @@ function exportLua() {
     link.click();
 }
 
+let saved = false;
+
+window.onbeforeunload = function() {
+    if (!saved) {
+        return 'You have unsaved changes!';
+    }
+}
 function saveProject() {
+
+    saved = true;
     const state = Blockly.serialization.workspaces.save(workspace);
     const blob = new Blob([JSON.stringify(state)], { type: 'text/plain;charset=utf-8' });
     const link = document.createElement('a');
