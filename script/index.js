@@ -64,7 +64,7 @@ let workspace;
     };
 
     Blockly.Lua.forBlock["restartSong"] = function(block) {
-        return "restartSong(" + block.getFieldValue("SKIP") + ")\n";
+        return "restartSong(" + block.getFieldValue("SKIP").toLowerCase() + ")\n";
     }
 
     Blockly.Blocks["exitSong"] = {
@@ -82,7 +82,7 @@ let workspace;
     };
 
     Blockly.Lua.forBlock["exitSong"] = function(block) {
-        return "exitSong(" + block.getFieldValue("SKIP") + ")\n";
+        return "exitSong(" + block.getFieldValue("SKIP").toLowerCase() + ")\n";
     }
 
     Blockly.Blocks["loadSong"] = {
@@ -127,7 +127,7 @@ let workspace;
     };
 
     Blockly.Lua.forBlock["loadVideo"] = function(block) {
-        return "loadVideo('" + block.getFieldValue("VIDEO") + "', " + block.getFieldValue("SKIP") + ", " + block.getFieldValue("MID") + ", " + block.getFieldValue("LOOP") + ", " + block.getFieldValue("PLAY") + ")\n";
+        return "loadVideo('" + block.getFieldValue("VIDEO").toLowerCase() + "', " + block.getFieldValue("SKIP").toLowerCase() + ", " + block.getFieldValue("MID").toLowerCase() + ", " + block.getFieldValue("LOOP").toLowerCase() + ", " + block.getFieldValue("PLAY").toLowerCase() + ")\n";
     }
 
     Blockly.Blocks["luaCode"] = {
