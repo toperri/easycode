@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credits</title>
+</head>
+<body>
+    <img src="easycodeLogo.png" width="200" alt="" class="ezcode">
+    <p>Hosted and created by <b>toperri</b>.</p>
+    <button onclick="window.open('https://gamebanana.com/tools/19248')">Open GameBanana</button>
+    <img src="toperriTransp.png" alt="" width="200" class="toperri">
+    <br>
+    <p class="ver"></p>
+</body>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+    .ezcode {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .toperri {
+        position: fixed;
+        bottom: 0px;
+        right: 0px;
+        user-select: none;
+    }
+    button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 12px;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+<script>
+    (async () => {
+        const response = await fetch('../versions.json');
+        const data = await response.json();
+        document.querySelector('.ver').innerText = `Version ${data.version}`;
+    })();
+</script>
+</html>

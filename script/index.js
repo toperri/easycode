@@ -214,5 +214,62 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function help() {
-    window.open('https://gamebanana.com/tools/19248');
+    createWindow('credits/credits.html', 'Help', 800, 600);
+}
+
+function createWindow(url, name, width = 400, height = 300) {
+    const windowDiv = document.createElement('div');
+    windowDiv.style.position = 'absolute';
+    windowDiv.style.top = '50px';
+    windowDiv.style.left = '50px';
+    windowDiv.style.width = width + 'px';
+    windowDiv.style.height = height + 'px';
+    windowDiv.style.border = '1px solid black';
+    windowDiv.style.backgroundColor = 'white';
+    windowDiv.style.resize = 'both';
+    windowDiv.style.overflow = 'hide';
+    windowDiv.style.zIndex = 1000;
+
+    const headerDiv = document.createElement('div');
+    headerDiv.style.width = '100%';
+    headerDiv.style.height = '30px';
+    headerDiv.style.backgroundColor = '#ccc';
+    headerDiv.style.cursor = 'move';
+    headerDiv.style.display = 'flex';
+    headerDiv.style.alignItems = 'center';
+    headerDiv.style.justifyContent = 'space-between';
+    headerDiv.innerHTML = '<span style="margin-left: 10px">' + name + '</span><button style="margin-right: 10px">X</button>';
+    headerDiv.querySelector('button').addEventListener('click', () => {
+        document.body.removeChild(windowDiv);
+    });
+    windowDiv.appendChild(headerDiv);
+
+    const iframe = document.createElement('iframe');
+    iframe.src = url;
+    iframe.style.width = '100%';
+    iframe.style.height = 'calc(100% - 30px)';
+    iframe.style.border = 'none';
+
+    windowDiv.appendChild(iframe);
+    document.body.appendChild(windowDiv);
+
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    headerDiv.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        offsetX = e.clientX - windowDiv.offsetLeft;
+        offsetY = e.clientY - windowDiv.offsetTop;
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+            windowDiv.style.left = `${e.clientX - offsetX}px`;
+            windowDiv.style.top = `${e.clientY - offsetY}px`;
+        }
+    });
+
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
 }
