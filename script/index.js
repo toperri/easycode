@@ -273,3 +273,21 @@ function createWindow(url, name, width = 400, height = 300) {
         isDragging = false;
     });
 }
+
+function playAudio(url) {
+    const audio = new Audio(url);
+    audio.play();
+}
+function file() {
+    document.querySelector('.file').style.display = 'block';
+    document.querySelector('.menu').style.display = 'none';
+
+    playAudio('snd/confirm.mp3');
+}
+
+function back() {
+    document.querySelector('.file').style.display = 'none';
+    document.querySelector('.menu').style.display = 'block';
+
+    playAudio('snd/back.mp3');
+}

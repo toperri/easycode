@@ -4,24 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EasyCode</title>
-    <!-- Load Blockly core -->
     <script src="https://unpkg.com/blockly/blockly_compressed.js"></script>
-    <!-- Load the default blocks -->
     <script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
-    <!-- Load a generator -->
     <script src="https://unpkg.com/blockly/lua_compressed.js"></script>
-    <!-- Load a message file -->
     <script src="https://unpkg.com/blockly/msg/en.js"></script>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <div class="bar">
-        FNF EasyCode (alpha)
-        <span style="margin-right: 10px;"></span>
-        <button onclick="saveProject()">Save</button>
-        <button onclick="loadProject()">Load</button>
-        <button onclick="exportLua()">Export</button>
-        <button onclick="help()">Credits</button>
+        <div class="menu">
+            <button onclick="file()">File</button>
+            <button onclick="help()">Credits</button>
+        </div>
+        <div class="file" style="display: none;">
+            <button onclick="back()"><-</button>
+            <button onclick="saveProject()">Save</button>
+            <button onclick="loadProject()">Load</button>
+            <button onclick="exportLua()">Export</button>
+        </div>
+    </div>
+    <div class="centerTitle">
+        EasyCode
     </div>
     <div id="blocklyDiv" style="height: calc(100vh - 30px); width: 100%;"></div>
 </body>

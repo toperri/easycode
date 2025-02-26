@@ -3,20 +3,29 @@
 body {
     margin: 0;
     font-family: Montserrat, sans-serif;
-    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .bar {
-    width: 100%;
+    width: calc(100%-10px);
     display: flex;
     justify-content: left;
     align-items: center;
     background: #2d2d2d;
     color: white;
-    height: 30px;
+    height: 40px;
     padding: 0 10px;
     overflow: hidden;
     font-size: 13px !important;
+}
+
+.centerTitle {
+    position: fixed;
+    top: 10px;
+    right: 50%;
+    transform: translateX(50%);
+    font-size: 15px;
+    color: white;
 }
 
 .bar button {
@@ -28,12 +37,11 @@ body {
     margin-left: 10px;
     height: 30px;
     padding-bottom: 5px;
-    width: 200px;
-    transform: translateY(5px);
+    width: 150px;
+    transform: translateY(4px);
     margin-right: 10px;
     transition: 0.3s all;
 }
 .bar button:hover {
     background-color: #000000;
-    transform: translateY(4px);
 }
