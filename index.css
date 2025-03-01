@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+@font-face {
+    font-family: "VCR OSD Mono";
+    src: url("assets/vcr.ttf");
+}
+
 body {
     margin: 0;
     font-family: Montserrat, sans-serif;
@@ -26,6 +31,7 @@ body {
     transform: translateX(50%);
     font-size: 15px;
     color: white;
+    font-family: "VCR OSD Mono";
 }
 
 @keyframes btn {
@@ -53,6 +59,7 @@ body {
     margin-right: 10px;
     transition: 0.3s all;
     animation: 0.3s btn forwards;
+    font-family: "VCR OSD Mono";
 }
 .bar button:hover {
     background-color: #000000;

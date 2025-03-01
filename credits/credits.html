@@ -8,10 +8,15 @@
 <body>
     <img src="easycodeLogo.png" width="200" alt="" class="ezcode">
     <p>Hosted and created by <b>toperri</b>.</p>
-    <button onclick="window.open('https://gamebanana.com/tools/19248')">Open GameBanana</button>
+    <p>Check out the GameBanana page here:</p>
+    <button onclick="javascript:window.open('https://gamebanana.com/tools/19248', '_blank');">
+        <img src="https://gamebanana.com/tools/embeddables/19248?type=large"/>
+    </button>
     <img src="toperriTransp.png" alt="" width="200" class="toperri">
     <br>
+    <hr>
     <p class="ver"></p>
+    <p id="mapping">Progress for Psych Engine function mapping: $n out of 212</p>
 </body>
 <style>
     body {
@@ -32,22 +37,7 @@
         user-select: none;
     }
     button {
-        background-color: #4CAF50; /* Green */
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 12px;
-        transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-        background-color: #45a049;
+        padding: 10px;
     }
 </style>
 <script>
@@ -55,6 +45,7 @@
         const response = await fetch('../versions.json');
         const data = await response.json();
         document.querySelector('.ver').innerText = `Version ${data.version}`;
+        document.querySelector('#mapping').innerText = `Progress for Psych Engine function mapping: ${data.mapping} out of 212`;
     })();
 </script>
 </html>

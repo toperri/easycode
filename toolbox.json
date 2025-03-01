@@ -104,6 +104,20 @@
       },
       {
         "kind": "category",
+        "name": "Spriting",
+        "contents": [
+          {
+            "kind": "block",
+            "type": "makeLuaSprite"
+          },
+          {
+            "kind": "block",
+            "type": "makeGraphic"
+          }
+        ]
+      },
+      {
+        "kind": "category",
         "name": "Raw LUA",
         "contents": [
           {

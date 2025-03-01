@@ -147,6 +147,53 @@ let workspace;
         return block.getFieldValue("CODE") + "\n";
     }
 
+    Blockly.Blocks["makeLuaSprite"] = {
+        init: function() {
+            this.appendDummyInput()
+                .appendField("create sprite with image ")
+                .appendField(new Blockly.FieldTextInput("sprite"), "SPRITE")
+                .appendField(" at x ")
+                .appendField(new Blockly.FieldNumber(0), "X")
+                .appendField(" y ")
+                .appendField(new Blockly.FieldNumber(0), "Y")
+                .appendField(" with tag ")
+                .appendField(new Blockly.FieldTextInput("tag"), "TAG");
+            this.setPreviousStatement(true, null);
+            this.setNextStatement(true, null);
+            this.setColour(230);
+            this.setTooltip('');
+            this.setHelpUrl('');
+        }
+    };
+
+    Blockly.Lua.forBlock["makeLuaSprite"] = function(block) {
+        return "makeSprite(\"" + block.getFieldValue("TAG") + "\", \"" + block.getFieldValue("SPRITE") + "\", " + block.getFieldValue("X") + ", " + block.getFieldValue("Y") + ")\n";
+    }
+
+    Blockly.Blocks["makeGraphic"] = {
+        init: function() {
+            this.appendDummyInput()
+                .appendField("create graphic (color: ")
+                .appendField(new Blockly.FieldTextInput("#FFFFFF"), "COLOR")
+                .appendField("; width ")
+                .appendField(new Blockly.FieldNumber(0), "W")
+                .appendField("; height ")
+                .appendField(new Blockly.FieldNumber(0), "H")
+                .appendField("; tag ")
+                .appendField(new Blockly.FieldTextInput("tag"), "TAG")
+                .appendField(")");
+            this.setPreviousStatement(true, null);
+            this.setNextStatement(true, null);
+            this.setColour(210);
+            this.setTooltip('');
+            this.setHelpUrl('');
+        }
+    };
+
+    Blockly.Lua.forBlock["makeGraphic"] = function(block) {
+        return "makeGraphic(\"" + block.getFieldValue("TAG") + "\", " + block.getFieldValue("W") + ", " + block.getFieldValue("H") + ", \"" + block.getFieldValue("COLOR") + "\")\n";
+    };
+
     const toolbox = await fetch('toolbox.json').then(response => response.json());
     // The toolbox gets passed to the configuration struct during injection.
     workspace = Blockly.inject('blocklyDiv', {toolbox: toolbox});
@@ -217,6 +264,10 @@ function help() {
     createWindow('credits/credits.html', 'Help', 800, 600);
 }
 
+function test() {
+    createWindow('companion/index.html', 'Test your script', 800, 600);
+}
+
 function createWindow(url, name, width = 400, height = 300) {
     const windowDiv = document.createElement('div');
     windowDiv.style.position = 'absolute';
@@ -272,6 +323,8 @@ function createWindow(url, name, width = 400, height = 300) {
     document.addEventListener('mouseup', () => {
         isDragging = false;
     });
+
+    return iframe;
 }
 
 function playAudio(url) {
@@ -291,3 +344,22 @@ function back() {
 
     playAudio('snd/back.mp3');
 }
+
+document.addEventListener('keydown', (event) => {
+    if (event.ctrlKey && event.altKey && event.code === 'KeyC') {
+        const colorPicker = document.createElement('input');
+        colorPicker.type = 'color';
+        colorPicker.style.position = 'absolute';
+        colorPicker.style.left = '-9999px';
+        document.body.appendChild(colorPicker);
+        colorPicker.click();
+        colorPicker.addEventListener('input', () => {
+            const color = colorPicker.value;
+            navigator.clipboard.writeText(color).then(() => {
+                console.log(`Color ${color} copied to clipboard`);
+            }).catch(err => {
+                console.error('Failed to copy color: ', err);
+            });
+        });
+    }
+});
