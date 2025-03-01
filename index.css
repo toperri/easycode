@@ -28,6 +28,17 @@ body {
     color: white;
 }
 
+@keyframes btn {
+    from {
+        transform: translateY(10px);
+        opacity: 0.3;
+    }
+    to {
+        transform: translateY(4px);
+        opacity: 1;
+    }
+}
+
 .bar button {
     background-color: #1a1a1a;
     border: none;
@@ -41,6 +52,7 @@ body {
     transform: translateY(4px);
     margin-right: 10px;
     transition: 0.3s all;
+    animation: 0.3s btn forwards;
 }
 .bar button:hover {
     background-color: #000000;

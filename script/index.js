@@ -192,7 +192,7 @@ function saveProject() {
 function loadProject() {
     const input = document.createElement('input');
     input.type = 'file';
-    input.accept = '.xml';
+    input.accept = '.ezc';
     input.onchange = () => {
         const file = input.files[0];
         const reader = new FileReader();
