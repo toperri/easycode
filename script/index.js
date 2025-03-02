@@ -23,7 +23,17 @@ let workspace;
 (async () => {
     eval(await fetch('script/blocks.js').then(response => response.text()));
 
-    const toolbox = await fetch('toolbox.json').then(response => response.json());
+    var toolbox = null;
+    try {
+        toolbox = await fetch('toolbox.json').then(response => response.json());
+    }
+    catch (e) {
+        blurt(
+            'Error',
+            'Failed to load toolbox',
+            'error'
+        );
+    }
     // The toolbox gets passed to the configuration struct during injection.
     workspace = Blockly.inject('blocklyDiv', {toolbox: toolbox});
 
@@ -50,7 +60,8 @@ let workspace;
 })();
   
 
-function exportLua() {
+async function exportLua() {
+    var filename = await bromptPromise('Enter the filename to save');
     var code = Blockly.Lua.workspaceToCode(workspace);
 
     if (code.includes('function onBoot()')) {
@@ -61,7 +72,7 @@ function exportLua() {
     const blob = new Blob([code], { type: 'text/plain;charset=utf-8' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = 'New EasyCode LUA code.lua';
+    link.download = filename.replace('.lua','') + '.lua';
     link.click();
 }
 
@@ -72,14 +83,20 @@ window.onbeforeunload = function() {
         return 'You have unsaved changes!';
     }
 }
-function saveProject() {
+
+function bromptPromise(message) {
+    return new Promise((resolve, reject) => {
+        brompt(message, resolve);
+    });
+}
+async function saveProject() {
 
     saved = true;
     const state = Blockly.serialization.workspaces.save(workspace);
     const blob = new Blob([JSON.stringify(state)], { type: 'text/plain;charset=utf-8' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    var aa = prompt('Enter the filename to save:', 'New EasyCode File');
+    var aa = await bromptPromise('Enter the filename to save');
     link.download = ([null, ""].includes(aa) ? 'New EasyCode File' : aa) + '.ezc';
     if (link.download) {
         link.click();
@@ -213,3 +230,6 @@ document.addEventListener('keydown', (event) => {
         });
     }
 });
+
+window.blurt = blurt;
+window.brompt = brompt;

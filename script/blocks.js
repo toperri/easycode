@@ -110,7 +110,6 @@ Blockly.Lua.forBlock["loadVideo"] = function(block) {
 Blockly.Blocks["luaCode"] = {
     init: function() {
         this.appendDummyInput()
-            .appendField("run LUA code ")
             .appendField(new Blockly.FieldTextInput("print(\"hello!\")"), "CODE");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -124,12 +123,35 @@ Blockly.Lua.forBlock["luaCode"] = function(block) {
     return block.getFieldValue("CODE") + "\n";
 }
 
+Blockly.Blocks["luaSet"] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("set")
+            .appendField(new Blockly.FieldTextInput("object"), "OBJECT")
+            .appendField("property")
+            .appendField(new Blockly.FieldTextInput("property"), "PROPERTY")
+            .appendField("to")
+            .appendField(new Blockly.FieldTextInput("value"), "VALUE");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(230);
+        this.setTooltip('Sets a property of an object to a specified value');
+        this.setHelpUrl('');
+    }
+};
+
+Blockly.Lua.forBlock["luaSet"] = function(block) {
+    var object = block.getFieldValue("OBJECT");
+    var property = block.getFieldValue("PROPERTY");
+    var value = block.getFieldValue("VALUE");
+    return object + "." + property + " = " + value + "\n";
+};
+
 Blockly.Blocks["luaCodeWReturn"] = {
     init: function() {
         this.appendDummyInput()
-            .appendField("LUA statement ")
-            .appendField(new Blockly.FieldTextInput("return 42"), "CODE");
-        this.setOutput(true, null); // Set it as an output block
+            .appendField(new Blockly.FieldTextInput("myFunction()"), "CODE");
+        this.setOutput(true, "String");
         this.setColour(230);
         this.setTooltip('');
         this.setHelpUrl('');

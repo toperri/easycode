@@ -1,135 +1,203 @@
 {
-    "kind": "categoryToolbox",
-    "contents": [
-      {
-        "kind": "category",
-        "name": "Functions",
-        "custom": "PROCEDURE",
-        "contents": []
-      },
-      {
-        "kind": "category",
-        "name": "Variables",
-        "custom": "VARIABLE"
-      },
-      {
-        "kind": "category",
-        "name": "Constants",
-        "contents": [
-          {
-            "kind": "block",
-            "type": "math_number",
-            "fields": {
-              "NUM": 42
-            }
-          },
-          {
-            "kind": "block",
-            "type": "text",
-            "fields": {
-              "TEXT": "Hello"
-            }
+  "kind": "categoryToolbox",
+  "contents": [
+    {
+      "kind": "category",
+      "name": "Functions",
+      "custom": "PROCEDURE",
+      "contents": []
+    },
+    {
+      "kind": "category",
+      "name": "Variables",
+      "custom": "VARIABLE"
+    },
+    {
+      "kind": "category",
+      "name": "Constants",
+      "contents": [
+        {
+          "kind": "block",
+          "type": "math_number",
+          "fields": {
+            "NUM": 42
           }
-        ]
-      },
-      {
-        "kind": "category",
-        "name": "Logic",
-        "contents": [
-          {
-            "kind": "block",
-            "type": "controls_if"
-          },
-          {
-            "kind": "block",
-            "type": "controls_repeat_ext",
-            "inputs": {
-              "TIMES": {
-                "block": {
-                  "type": "math_number",
-                  "fields": {
-                    "NUM": 10
-                  }
+        },
+        {
+          "kind": "block",
+          "type": "text",
+          "fields": {
+            "TEXT": "Hello"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "category",
+      "name": "Logic",
+      "contents": [
+        {
+          "kind": "block",
+          "type": "controls_if"
+        },
+        {
+          "kind": "block",
+          "type": "controls_repeat_ext",
+          "inputs": {
+            "TIMES": {
+              "block": {
+                "type": "math_number",
+                "fields": {
+                  "NUM": 10
                 }
               }
             }
           }
-        ]
-      },
-      {
-        "kind": "category",
-        "name": "Song Progress",
-        "contents": [
-          {
-            "kind": "block",
-            "type": "startCountdown"
+        }
+      ]
+    },
+    {
+      "kind": "category",
+      "name": "Song Progress",
+      "contents": [
+        {
+          "kind": "block",
+          "type": "startCountdown"
+        },
+        {
+          "kind": "block",
+          "type": "endSong"
+        },
+        {
+          "kind": "block",
+          "type": "getSongPosition"
+        }
+      ]
+    },
+    {
+      "kind": "category",
+      "name": "Song Control",
+      "contents": [
+        {
+          "kind": "block",
+          "type": "restartSong"
+        },
+        {
+          "kind": "block",
+          "type": "exitSong"
+        },
+        {
+          "kind": "block",
+          "type": "loadSong"
+        }
+      ]
+    },
+    {
+      "kind": "category",
+      "name": "Video",
+      "contents": [
+        {
+          "kind": "block",
+          "type": "loadVideo"
+        }
+      ]
+    },
+    {
+      "kind": "category",
+      "name": "Spriting",
+      "contents": [
+        {
+          "kind": "block",
+          "type": "makeLuaSprite"
+        },
+        {
+          "kind": "block",
+          "type": "makeGraphic"
+        }
+      ]
+    },
+    {
+      "kind": "category",
+      "name": "Maths",
+      "contents": [
+        {
+          "kind": "block",
+          "type": "math_arithmetic",
+          "fields": {
+            "OP": "ADD"
           },
-          {
-            "kind": "block",
-            "type": "endSong"
-          },
-          {
-            "kind": "block",
-            "type": "getSongPosition"
+          "inputs": {
+            "A": {
+              "block": {
+                "type": "math_number",
+                "fields": {
+                  "NUM": 1
+                }
+              }
+            },
+            "B": {
+              "block": {
+                "type": "math_number",
+                "fields": {
+                  "NUM": 1
+                }
+              }
+            }
           }
-        ]
-      },
-      {
-        "kind": "category",
-        "name": "Song Control",
-        "contents": [
-          {
-            "kind": "block",
-            "type": "restartSong"
+        },
+        {
+          "kind": "block",
+          "type": "math_single",
+          "fields": {
+            "OP": "ROOT"
           },
-          {
-            "kind": "block",
-            "type": "exitSong"
+          "inputs": {
+            "NUM": {
+              "block": {
+                "type": "math_number",
+                "fields": {
+                  "NUM": 9
+                }
+              }
+            }
+          }
+        },
+        {
+          "kind": "block",
+          "type": "math_trig",
+          "fields": {
+            "OP": "SIN"
           },
-          {
-            "kind": "block",
-            "type": "loadSong"
+          "inputs": {
+            "NUM": {
+              "block": {
+                "type": "math_number",
+                "fields": {
+                  "NUM": 45
+                }
+              }
+            }
           }
-        ]
-      },
-      {
-        "kind": "category",
-        "name": "Video",
-        "contents": [
-          {
-            "kind": "block",
-            "type": "loadVideo"
-          }
-        ]
-      },
-      {
-        "kind": "category",
-        "name": "Spriting",
-        "contents": [
-          {
-            "kind": "block",
-            "type": "makeLuaSprite"
-          },
-          {
-            "kind": "block",
-            "type": "makeGraphic"
-          }
-        ]
-      },
-      {
-        "kind": "category",
-        "name": "Raw LUA",
-        "contents": [
-          {
-            "kind": "block",
-            "type": "luaCode"
-          },
-          {
-            "kind": "block",
-            "type": "luaCodeWReturn"
-          }
-        ]
-      }
-    ]
-  }
-  
+        }
+      ]
+    },
+    {
+      "kind": "category",
+      "name": "Raw LUA",
+      "contents": [
+        {
+          "kind": "block",
+          "type": "luaCode"
+        },
+        {
+          "kind": "block",
+          "type": "luaCodeWReturn"
+        },
+        {
+          "kind": "block",
+          "type": "luaSet"
+        }
+      ]
+    }
+  ]
+}

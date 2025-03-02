@@ -42,9 +42,44 @@
     }
 </style>
 <script>
-    document.getElementById('search').addEventListener('change', function() {
+    document.getElementById('search').addEventListener('change', async function() {
         if (this.value.includes('..') || this.value.includes('http') || this.value.includes('https') || this.value.includes('ftp') || this.value.includes('./')) {
-            alert('The Documentation Browser cannot load this address');
+            window.parent.blurt(
+                'Security',
+                'The doc browser cannot load the requested address for security reasons.',
+                'warning'
+            );
+            document.getElementById('search').value = '';
+            return;
+        }
+
+        var oops = [404, 403, 500, 502, 503, 504];
+        var status;
+        var exists = await fetch(this.value + (this.value.endsWith('.html') ? '' : '.html'))
+            .then(response => {
+            status = response.status;
+            return !oops.includes(response.status);
+            })
+            .catch(() => {
+            status = 'error';
+            return false;
+            });
+        if (!exists) {
+            window.parent.blurt(
+                "" + status,
+                'The requested address was not found on this server.',
+                'error'
+            );
+            document.getElementById('search').value = '';
+            return;
+        }
+
+        if (this.value.includes('index')) {
+            window.parent.blurt(
+                'Internal error',
+                'Cannot load this page.',
+                'error'
+            );
             document.getElementById('search').value = '';
             return;
         }
