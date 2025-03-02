@@ -123,6 +123,10 @@
           {
             "kind": "block",
             "type": "luaCode"
+          },
+          {
+            "kind": "block",
+            "type": "luaCodeWReturn"
           }
         ]
       }

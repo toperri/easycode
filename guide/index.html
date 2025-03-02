@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="bar">
+        <input type="text" id="search" placeholder="Insert an address here">
+    </div>
+    <iframe src="start.html" frameborder="0" id="iframe"></iframe>
+</body>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+    }
+    .bar {
+        width: 100%;
+        height: 30px;
+        background-color: #ccc;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+    }
+
+    input {
+        width: 100%;
+        margin: 10px;
+        border: none;
+        padding: 0 10px;
+        font-size: 16px;
+    }
+
+    iframe {
+        width: 100%;
+        height: calc(100vh - 30px);
+        border: none;
+    }
+</style>
+<script>
+    document.getElementById('search').addEventListener('change', function() {
+        if (this.value.includes('..') || this.value.includes('http') || this.value.includes('https') || this.value.includes('ftp') || this.value.includes('./')) {
+            alert('The Documentation Browser cannot load this address');
+            document.getElementById('search').value = '';
+            return;
+        }
+        document.getElementById('iframe').src = this.value + (this.value.endsWith('.html') ? '' : '.html');
+        document.getElementById('search').value = '';
+    });
+</script>
+</html>
