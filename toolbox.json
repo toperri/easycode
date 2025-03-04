@@ -53,6 +53,56 @@
               }
             }
           }
+        },
+        {
+          "kind": "block",
+          "type": "logic_compare",
+          "fields": {
+            "OP": "EQ"
+          },
+          "inputs": {
+            "A": {
+              "block": {
+                "type": "math_number",
+                "fields": {
+                  "NUM": 0
+                }
+              }
+            },
+            "B": {
+              "block": {
+                "type": "math_number",
+                "fields": {
+                  "NUM": 0
+                }
+              }
+            }
+          }
+        },
+        {
+          "kind": "block",
+          "type": "logic_operation",
+          "fields": {
+            "OP": "AND"
+          },
+          "inputs": {
+            "A": {
+              "block": {
+                "type": "logic_boolean",
+                "fields": {
+                  "BOOL": "TRUE"
+                }
+              }
+            },
+            "B": {
+              "block": {
+                "type": "logic_boolean",
+                "fields": {
+                  "BOOL": "TRUE"
+                }
+              }
+            }
+          }
         }
       ]
     },
