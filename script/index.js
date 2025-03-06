@@ -20,6 +20,8 @@ function registerBlock(internalName, displayName, generator, codeMaker, color) {
 let workspace;
 
 
+
+
 (async () => {
     eval(await fetch('script/blocks.js').then(response => response.text()));
 
@@ -233,3 +235,8 @@ document.addEventListener('keydown', (event) => {
 
 window.blurt = blurt;
 window.brompt = brompt;
+
+if (localStorage.getItem('firstRun') === null) {
+    localStorage.setItem('firstRun', 'false');
+    blurt("Warning","By continuing you accept the EasyCode license (https://gamebanana.com/tools/license/19248). This screen will only appear once.");
+}
